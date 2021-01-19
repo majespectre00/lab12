@@ -17,3 +17,33 @@ int main(){
     cout << "\nMin = " << B[5];
     return 0;
 }
+
+void stat(const double X[], int arrsize, double Y[]){
+    double sum = 0;
+    for(int i = 0;i<arrsize;i++){
+        sum += X[i];
+    }
+    Y[0] = sum/arrsize;
+    double sum2 = 0;
+    for(int i = 0;i<arrsize;i++){
+        sum2 += pow((X[i]-Y[0]),2);
+    }
+    Y[1] = sqrt(sum2/arrsize);
+    double ggez = 1;
+    for(int i = 0;i<arrsize;i++){
+        ggez*=X[i];
+    }
+    Y[2] = pow(ggez,1.0/arrsize);
+    double harm = 0;
+    for(int i = 0;i<arrsize;i++){
+        harm += 1.0/X[i];
+    }
+    Y[3] = arrsize/harm;
+    double min = X[0], max = X[0];
+     for(int i = 0;i<arrsize;i++){
+         if(X[i]>max) max = X[i];
+         if(X[i]<min) min = X[i];
+     }
+     Y[4] = max;
+     Y[5] = min;
+}
